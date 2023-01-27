@@ -5,5 +5,5 @@ import com.nizam.springrest.entities.Course;
 import java.util.List;
 
 public interface CourseService {
-    List<Course> getCourse();
+    List<Course> getCourses();
 }

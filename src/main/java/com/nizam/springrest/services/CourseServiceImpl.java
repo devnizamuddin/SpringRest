@@ -1,10 +1,12 @@
 package com.nizam.springrest.services;
 
 import com.nizam.springrest.entities.Course;
+import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
 
+@Service
 public class CourseServiceImpl implements CourseService{
 
     List<Course>courseList;
@@ -17,7 +19,7 @@ public class CourseServiceImpl implements CourseService{
     }
 
     @Override
-    public List<Course> getCourse() {
+    public List<Course> getCourses() {
         return courseList;
     }
 }
