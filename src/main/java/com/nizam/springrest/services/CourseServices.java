@@ -1,2 +1,4 @@
-package com.nizam.springrest.services;public interface CourseServices {
+package com.nizam.springrest.services;
+
+public interface CourseServices {
 }
