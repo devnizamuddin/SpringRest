@@ -22,4 +22,17 @@ public class CourseServiceImpl implements CourseService{
     public List<Course> getCourses() {
         return courseList;
     }
+
+    @Override
+    public Course getCourse(long id) {
+        Course course = null;
+        for (Course course1: courseList){
+            if (course1.getId()==id){
+                course = course1;
+                break;
+            }
+        }
+        return course;
+    }
+
 }
