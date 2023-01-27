@@ -12,4 +12,6 @@ public interface CourseService {
     Course addCourse(Course course);
 
     Course updateCourse(Course updatedCourse);
+
+    String deleteCourse(long id);
 }
