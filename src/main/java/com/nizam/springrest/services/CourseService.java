@@ -10,4 +10,6 @@ public interface CourseService {
     Course getCourse(long id);
 
     Course addCourse(Course course);
+
+    Course updateCourse(Course updatedCourse);
 }
