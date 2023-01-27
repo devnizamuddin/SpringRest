@@ -27,4 +27,9 @@ public class CourseController {
     Course addCourse(@RequestBody Course course) {
         return courseService.addCourse(course);
     }
+
+    @PutMapping("/updateCourse")
+    Course updateCourse(@RequestBody Course updateCourse) {
+        return courseService.addCourse(updateCourse);
+    }
 }
