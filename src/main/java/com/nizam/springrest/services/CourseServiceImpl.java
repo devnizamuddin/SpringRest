@@ -1,6 +1,8 @@
 package com.nizam.springrest.services;
 
+import com.nizam.springrest.dao.CourseDao;
 import com.nizam.springrest.entities.Course;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -9,18 +11,20 @@ import java.util.List;
 @Service
 public class CourseServiceImpl implements CourseService{
 
+    @Autowired
+    CourseDao courseDao;
     List<Course>courseList;
     public CourseServiceImpl() {
         courseList = new ArrayList<>();
-        courseList.add(new Course(324,"Bangla","Learning Bangla"));
-        courseList.add(new Course(3423,"English","Learning English"));
-        courseList.add(new Course(23545,"Math","Learning Math"));
-        courseList.add(new Course(345345,"Science","Learning Science"));
+        courseList.add(new Course(2,"Bangla","Learning Bangla"));
+        courseList.add(new Course(3,"English","Learning English"));
+        courseList.add(new Course(4,"Math","Learning Math"));
+        courseList.add(new Course(5,"Science","Learning Science"));
     }
 
     @Override
     public List<Course> getCourses() {
-        return courseList;
+        return courseDao.findAll();
     }
 
     @Override
