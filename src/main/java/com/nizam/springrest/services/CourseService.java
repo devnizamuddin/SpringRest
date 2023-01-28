@@ -3,11 +3,12 @@ package com.nizam.springrest.services;
 import com.nizam.springrest.entities.Course;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface CourseService {
     List<Course> getCourses();
 
-    Course getCourse(long id);
+    Optional<Course> getCourse(long id);
 
     Course addCourse(Course course);
 
