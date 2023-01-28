@@ -1,9 +1,19 @@
 package com.nizam.springrest.entities;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+
+@Entity
+@Table(name = "course")
 public class Course {
+    @Id
     long id;
     String name;
     String description;
+
+    public Course() {
+    }
 
     public Course(long id, String name, String description) {
         this.id = id;
