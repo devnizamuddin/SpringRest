@@ -41,7 +41,7 @@ public class CourseServiceImpl implements CourseService{
 
     @Override
     public Course addCourse(Course course) {
-        courseList.add(course);
+        courseDao.save(course);
         return course;
     }
 
