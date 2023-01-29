@@ -14,15 +14,6 @@ public class CourseServiceImpl implements CourseService {
 
     @Autowired
     CourseDao courseDao;
-    List<Course> courseList;
-
-    public CourseServiceImpl() {
-        courseList = new ArrayList<>();
-        courseList.add(new Course(2, "Bangla", "Learning Bangla"));
-        courseList.add(new Course(3, "English", "Learning English"));
-        courseList.add(new Course(4, "Math", "Learning Math"));
-        courseList.add(new Course(5, "Science", "Learning Science"));
-    }
 
     @Override
     public List<Course> getCourses() {
