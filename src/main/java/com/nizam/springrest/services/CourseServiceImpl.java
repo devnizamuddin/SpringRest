@@ -56,15 +56,15 @@ public class CourseServiceImpl implements CourseService {
 
     @Override
     public String deleteCourse(long id) {
+        try {
+            Optional<Course> optionalCourse = courseDao.findById(id);
+            courseDao.delete(optionalCourse.get());
+            return "successfully deleted";
+        } catch (Exception e) {
+            return "Course not found";
 
-        for (Course course : courseList) {
-            if (course.getId() == id) {
-                courseList.remove(course);
-                return "Successfully deleted";
-            }
         }
 
-        return "Course not found";
     }
 
 }
