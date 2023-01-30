@@ -9,5 +9,4 @@ public interface  StorageDao extends JpaRepository<ImageData,Long> {
 
     Optional<ImageData>findByName(String fileName);
 
-    byte[] downloadImage(String fileName);
 }
