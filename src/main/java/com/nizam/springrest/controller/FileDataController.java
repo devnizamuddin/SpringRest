@@ -29,7 +29,7 @@ public class FileDataController {
     public ResponseEntity<?> downloadFile(@PathVariable String fileName) throws IOException{
 
         byte[]imageData=fileService.downloadFile(fileName);
-        return ResponseEntity.status(HttpStatus.OK).contentType(MediaType.valueOf("image/png")).body(imageData);
+        return ResponseEntity.status(HttpStatus.OK).contentType(MediaType.valueOf("application/pdf")).body(imageData);
     }
 
 }
