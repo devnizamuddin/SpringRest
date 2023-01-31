@@ -8,6 +8,8 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.io.File;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.util.Optional;
 
 @Service
 public class FileServiceImpl implements FileService {
@@ -36,7 +38,12 @@ public class FileServiceImpl implements FileService {
     }
 
     @Override
-    public byte[] downloadFile(String fileName) {
-        return new byte[0];
+    public byte[] downloadFile(String fileName) throws IOException {
+
+       Optional<FileData> fileData =  fileDao.findByName(fileName);
+       String filePath = fileData.get().getLocation();
+       byte[] imageData = Files.readAllBytes(new File(filePath).toPath());
+
+        return imageData;
     }
 }
