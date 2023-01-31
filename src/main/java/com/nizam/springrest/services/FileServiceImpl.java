@@ -12,7 +12,8 @@ import java.io.IOException;
 @Service
 public class FileServiceImpl implements FileService {
 
-    private final String FOLDER_PATH = "/Users/nizamuddinshamrat/Learnings/SpringRest/Image/";
+    //private final String FOLDER_PATH = "/Users/nizamuddinshamrat/Learnings/SpringRest/Image/";
+    private final String FOLDER_PATH = "/Users/md.nizamuddinshamrat/Desktop/Image/";
     @Autowired
     FileDao fileDao;
 
