@@ -14,8 +14,8 @@ import java.util.Optional;
 @Service
 public class FileServiceImpl implements FileService {
 
-    //private final String FOLDER_PATH = "/Users/nizamuddinshamrat/Learnings/SpringRest/Image/";
-    private final String FOLDER_PATH = "/Users/md.nizamuddinshamrat/Desktop/Image/";
+    private final String FOLDER_PATH = "/Users/nizamuddinshamrat/Desktop/SpringRestFile/";
+    //private final String FOLDER_PATH = "/Users/md.nizamuddinshamrat/Desktop/Image/";
     @Autowired
     FileDao fileDao;
 
