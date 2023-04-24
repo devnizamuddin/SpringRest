@@ -25,7 +25,7 @@ public class MySecurityConfig {
                 .cors()
                 .disable()
                 .authorizeHttpRequests()
-                .requestMatchers("/getGreetings")
+                .requestMatchers("/token")
                 .permitAll()
                 .anyRequest()
                 .authenticated()
