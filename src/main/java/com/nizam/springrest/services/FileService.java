@@ -12,35 +12,34 @@ import java.nio.file.Files;
 import java.util.Optional;
 
 @Service
-public class FileService{
+public class FileService {
 
     private final String FOLDER_PATH = "/Users/nizamuddinshamrat/Desktop/SpringRestFile/";
     //private final String FOLDER_PATH = "/Users/md.nizamuddinshamrat/Desktop/Image/";
     @Autowired
     FileDao fileDao;
 
-    public String uploadFile(MultipartFile file) throws IOException {
+    public String uploadFileInServer(MultipartFile file) throws IOException {
 
         String filePath = FOLDER_PATH + file.getOriginalFilename();
         FileData fileData = fileDao.save(FileData.builder()
                 .name(file.getOriginalFilename()).type(file.getContentType())
                 .location(filePath).build());
 
-        if (fileData!=null){
+        if (fileData != null) {
 
             file.transferTo(new File(filePath));
             return "File Upload Successfully";
-        }
-        else {
+        } else {
             return "Error";
         }
     }
 
-    public byte[] downloadFile(String fileName) throws IOException {
+    public byte[] getFileFromServer(String fileName) throws IOException {
 
-       Optional<FileData> fileData =  fileDao.findByName(fileName);
-       String filePath = fileData.get().getLocation();
-       byte[] imageData = Files.readAllBytes(new File(filePath).toPath());
+        Optional<FileData> fileData = fileDao.findByName(fileName);
+        String filePath = fileData.get().getLocation();
+        byte[] imageData = Files.readAllBytes(new File(filePath).toPath());
 
         return imageData;
     }

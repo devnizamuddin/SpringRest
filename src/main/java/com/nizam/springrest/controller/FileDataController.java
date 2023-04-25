@@ -18,18 +18,20 @@ public class FileDataController {
     FileService fileService;
 
     @PostMapping
-    public ResponseEntity<?> fileUpload(@RequestParam("file")MultipartFile file) throws IOException {
+    public ResponseEntity<?> uploadFileInServer(@RequestParam("file")MultipartFile file) throws IOException {
 
-        String uploadImage = fileService.uploadFile(file);
+        String uploadImage = fileService.uploadFileInServer(file);
 
         return ResponseEntity.status(HttpStatus.OK).body(uploadImage);
     }
 
     @GetMapping("/{fileName}")
-    public ResponseEntity<?> downloadFile(@PathVariable String fileName) throws IOException{
+    public ResponseEntity<?> getFileFromServer(@PathVariable String fileName) throws IOException{
 
-        byte[]imageData=fileService.downloadFile(fileName);
-        return ResponseEntity.status(HttpStatus.OK).contentType(MediaType.valueOf("application/pdf")).body(imageData);
+        byte[]imageData=fileService.getFileFromServer(fileName);
+        return ResponseEntity.status(HttpStatus.OK)
+                .contentType(MediaType.IMAGE_JPEG)
+                .body(imageData);
     }
 
 }
