@@ -15,14 +15,14 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 
 @Configuration
 @EnableWebSecurity
-public class MySecurityConfig {
+public class SecurityConfig {
 
+    //For all security related config in this project
     @Autowired
     JwtAuthenticationFilter jwtFilter;
 
     @Bean
-    public SecurityFilterChain filterChain(HttpSecurity httpSecurity) throws Exception {
-
+    public SecurityFilterChain filterChain(HttpSecurity httpSecurity) throws Exception {//For every request adding security
         return httpSecurity
                 .csrf()
                 .disable()
@@ -30,16 +30,15 @@ public class MySecurityConfig {
                 .disable()
                 .authorizeHttpRequests()
                 .requestMatchers("/token")
-                .permitAll()
+                .permitAll()//permit all request for token
                 .anyRequest()
                 .authenticated()
                 .and()
-                .addFilterBefore(jwtFilter, UsernamePasswordAuthenticationFilter.class)
-                .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
+                .addFilterBefore(jwtFilter, UsernamePasswordAuthenticationFilter.class)//setting filter for every request
+                .sessionManagement()
+                .sessionCreationPolicy(SessionCreationPolicy.STATELESS)//add session creation policy
                 .and()
                 .build();
-
-
 //        return httpSecurity.
 //                csrf().disable()
 //                .authorizeHttpRequests()
@@ -54,12 +53,11 @@ public class MySecurityConfig {
 
     @Bean
     public AuthenticationManager authenticationManager(AuthenticationConfiguration authenticationConfiguration) throws Exception {
-
         return authenticationConfiguration.getAuthenticationManager();
     }
 
     @Bean
-    public PasswordEncoder passwordEncoder() {
+    public PasswordEncoder passwordEncoder() { //Bean for password encoding
         return NoOpPasswordEncoder.getInstance();
     }
 
