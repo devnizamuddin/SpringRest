@@ -17,21 +17,38 @@ public class FileDataController {
     @Autowired
     FileService fileService;
 
-    @PostMapping
-    public ResponseEntity<?> uploadFileInServer(@RequestParam("file")MultipartFile file) throws IOException {
+    @PostMapping(value = "/server")
+    public ResponseEntity<?> uploadFileInServer(@RequestParam("file") MultipartFile file) throws IOException {
 
         String uploadImage = fileService.uploadFileInServer(file);
 
         return ResponseEntity.status(HttpStatus.OK).body(uploadImage);
     }
 
-    @GetMapping("/{fileName}")
-    public ResponseEntity<?> getFileFromServer(@PathVariable String fileName) throws IOException{
+    @GetMapping("/server/{fileName}")
+    public ResponseEntity<?> getFileFromServer(@PathVariable String fileName) throws IOException {
 
-        byte[]imageData=fileService.getFileFromServer(fileName);
+        byte[] imageData = fileService.getFileFromServer(fileName);
         return ResponseEntity.status(HttpStatus.OK)
                 .contentType(MediaType.IMAGE_JPEG)
                 .body(imageData);
+    }
+
+    @PostMapping("/database")
+    public ResponseEntity<?> uploadFileInDatabase(@RequestParam("file") MultipartFile file) throws IOException {
+
+        String uploadImage = fileService.uploadFileInDatabase(file);
+
+        return ResponseEntity.status(HttpStatus.OK).body(uploadImage);
+    }
+
+    @GetMapping("/database/{fileName}")
+    public ResponseEntity<?> getFileFromDatabase(@PathVariable String fileName) {
+
+        byte[] imageData = fileService.getFileFromDatabase(fileName);
+
+        return ResponseEntity.status(HttpStatus.OK)
+                .contentType(MediaType.valueOf("image/png")).body(imageData);
     }
 
 }
